@@ -52,6 +52,7 @@ fi
 
 echo ${CURL_REPOSITORY_URL}
 echo ${CURL_DSYM}
+echo ${HOCKEYAPP_API_TOKEN}
 
 python "${BASH_SOURCE%/*}/../python/upload-app.py"
 
