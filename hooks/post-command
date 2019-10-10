@@ -52,9 +52,10 @@ fi
 
 echo ${CURL_REPOSITORY_URL}
 echo ${CURL_DSYM}
-echo ${HOCKEYAPP_API_TOKEN}
+echo ${API_TOKEN}
 
-python "${BASH_SOURCE%/*}/../python/upload-app.py"
+#python "${BASH_SOURCE%/*}/../python/upload-app.py"
+../python/upload-app.py
 
 if [[ "$?" -ne 0 ]]; then
     echo '[!] AppCenter upload failed'
