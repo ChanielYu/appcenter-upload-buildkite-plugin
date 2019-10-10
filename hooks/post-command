@@ -2,7 +2,7 @@
 
 if [[ "$BUILDKITE_COMMAND_EXIT_STATUS" -ne 0 ]]; then
 	echo '[!] Build failed, skipping AppCenter upload'
-	exit 0
+#	exit 0
 fi
 
 BUILDKITE_PLUGIN_APPCENTER_UPLOAD_API_TOKEN_FROM=${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_API_TOKEN_FROM:-HOCKEYAPP_API_TOKEN}
@@ -12,7 +12,7 @@ if [[ -z "${API_TOKEN}" ]]; then
 fi
 if [[ -z "${API_TOKEN-}" ]]; then
 	echo '[!] AppCenter API token required'
-	exit 1
+#	exit 1
 fi
 
 BUILDKITE_PLUGIN_APPCENTER_UPLOAD_APP_ID_FROM=${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_APP_ID_FROM:-HOCKEYAPP_APP_ID}
@@ -22,12 +22,12 @@ if [[ -z "${APP_ID}" ]]; then
 fi
 if [[ -z "${APP_ID-}" ]]; then
 	echo '[!] AppCenter Application ID required'
-	exit 1
+#	exit 1
 fi
 
 if [[ -z "${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-}" ]]; then
 	echo '[!] .ipa filename required'
-	exit 1
+#	exit 1
 fi
 
 
@@ -54,11 +54,11 @@ echo ${CURL_REPOSITORY_URL}
 echo ${CURL_DSYM}
 echo ${HOCKEYAPP_API_TOKEN}
 
-python "${BASH_SOURCE%/*}/../python/upload-app.py"
+#python "${BASH_SOURCE%/*}/../python/upload-app.py"
 
 if [[ "$?" -ne 0 ]]; then
     echo '[!] AppCenter upload failed'
-    exit 1
+#    exit 1
 fi
 
 exit 0
