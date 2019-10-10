@@ -56,7 +56,7 @@ echo ${API_TOKEN}
 echo ${BASH_SOURCE%/*}
 pwd
 
-python "${BASH_SOURCE%/*}/../python/upload-app.py"
+python3 "${BASH_SOURCE%/*}/../python/upload-app.py"
 
 if [[ "$?" -ne 0 ]]; then
     echo '[!] AppCenter upload failed'
