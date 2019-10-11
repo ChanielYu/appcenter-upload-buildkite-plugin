@@ -62,7 +62,7 @@ echo ${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-}
 echo ${APPCENTER_APP_NAME}
 pwd
 
-#python3 "${BASH_SOURCE%/*}/../python/upload-app.py" --appName ChanielTest --appFile /Users/yuc/Development/TAB/android/android-TAB/TAB/build/outputs/apk/tabWebsite/debug/TAB-tab-website-debug.apk
+python3 "${BASH_SOURCE%/*}/../python/upload-app.py" --appName ${APPCENTER_APP_NAME} --appFile ${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-}
 
 if [[ "$?" -ne 0 ]]; then
     echo '[!] AppCenter upload failed'
