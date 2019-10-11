@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import json
 import requests
+import argparse
+
+'/Users/yuc/Development/TAB/android/android-TAB/TAB/build/outputs/apk/tabWebsite/debug/TAB-tab-website-debug.apk'
 
 BASE_URL = 'https://api.appcenter.ms/v0.1/apps'
 UPLOAD_URL = 'release_uploads'
@@ -8,6 +11,7 @@ HEADERS = {'Accept': 'application/json', 'Content-Type': 'application/json',
            'X-API-Token': '439d8f2e3db549553e2183ff7d627762351961c5'}
 UPLOAD_FILE_NAME_KEY = 'ipa'
 UPLOAD_FILE_CONTENT = 'TAB.apk'
+OWNER_NAME = 'chaniel-yu'
 
 release_information = {
     "release_id": 123,
@@ -35,10 +39,11 @@ def get_upload_url(owner, app, release_info, filename):
     print('Commit upload status code:', patch_params.status_code)
 
 
-owner_name = 'chaniel-yu'
-app_name = 'ChanielTest'
-# get_upload_url(
-#     owner_name, app_name,
-#     release_information,
-#     '/Users/yuc/Development/TAB/android/android-TAB/TAB/build/outputs/apk/tabWebsite/debug/TAB-tab-website-debug.apk')
-print('Hello world!')
+parser = argparse.ArgumentParser()
+parser.add_argument("--appName", required=True, type=str)
+parser.add_argument("--appFile", required=True, type=str)
+args = parser.parse_args()
+app_name = args.appName
+app_file = args.appFile
+print(app_name, app_file)
+# get_upload_url(OWNER_NAME, app_name, release_information, app_file)

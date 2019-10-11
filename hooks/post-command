@@ -30,6 +30,10 @@ if [[ -z "${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-}" ]]; then
 	exit 1
 fi
 
+if [[ -z "${APPCENTER_APP_NAME}" ]]; then
+    echo '[!] App name is required'
+	exit 1
+fi
 
 CURL_DSYM=""
 if [[ ! -z "${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_DSYM_ZIP-}" ]]; then
@@ -54,9 +58,11 @@ echo ${CURL_REPOSITORY_URL}
 echo ${CURL_DSYM}
 echo ${API_TOKEN}
 echo ${BASH_SOURCE%/*}
+echo ${BUILDKITE_PLUGIN_HOCKEYAPP_UPLOAD_PATH_IPA-}
+echo ${APPCENTER_APP_NAME}
 pwd
 
-python3 "${BASH_SOURCE%/*}/../python/upload-app.py"
+#python3 "${BASH_SOURCE%/*}/../python/upload-app.py" --appName ChanielTest --appFile /Users/yuc/Development/TAB/android/android-TAB/TAB/build/outputs/apk/tabWebsite/debug/TAB-tab-website-debug.apk
 
 if [[ "$?" -ne 0 ]]; then
     echo '[!] AppCenter upload failed'
