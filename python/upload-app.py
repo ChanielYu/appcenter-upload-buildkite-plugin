@@ -45,5 +45,4 @@ parser.add_argument("--appFile", required=True, type=str)
 args = parser.parse_args()
 app_name = args.appName
 app_file = args.appFile
-print(app_name, app_file)
-# get_upload_url(OWNER_NAME, app_name, release_information, app_file)
+get_upload_url(OWNER_NAME, app_name, release_information, app_file)
