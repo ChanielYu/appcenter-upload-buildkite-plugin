@@ -8,7 +8,7 @@ import argparse
 BASE_URL = 'https://api.appcenter.ms/v0.1/apps'
 UPLOAD_URL = 'release_uploads'
 HEADERS = {'Accept': 'application/json', 'Content-Type': 'application/json',
-           'X-API-Token': '439d8f2e3db549553e2183ff7d627762351961c5'}
+           'X-API-Token': '6f5093eb9a155f96cb2f97148172f923c0c575f5'}
 UPLOAD_FILE_NAME_KEY = 'ipa'
 UPLOAD_FILE_CONTENT = 'TAB.apk'
 OWNER_NAME = 'chaniel-yu'
