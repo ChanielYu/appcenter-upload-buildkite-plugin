@@ -3,15 +3,13 @@ import json
 import requests
 import argparse
 
-'/Users/yuc/Development/TAB/android/android-TAB/TAB/build/outputs/apk/tabWebsite/debug/TAB-tab-website-debug.apk'
-
 BASE_URL = 'https://api.appcenter.ms/v0.1/apps'
 UPLOAD_URL = 'release_uploads'
 HEADERS = {'Accept': 'application/json', 'Content-Type': 'application/json',
            'X-API-Token': '6f5093eb9a155f96cb2f97148172f923c0c575f5'}
 UPLOAD_FILE_NAME_KEY = 'ipa'
 UPLOAD_FILE_CONTENT = 'TAB.apk'
-OWNER_NAME = 'chaniel-yu'
+OWNER_NAME = 'The-Tabcorp-Mobile-Robot-Organization'
 
 release_information = {
     "release_id": 123,
