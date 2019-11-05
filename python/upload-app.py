@@ -5,8 +5,7 @@ import argparse
 
 BASE_URL = 'https://api.appcenter.ms/v0.1/apps'
 UPLOAD_URL = 'release_uploads'
-HEADERS = {'Accept': 'application/json', 'Content-Type': 'application/json',
-           'X-API-Token': '6f5093eb9a155f96cb2f97148172f923c0c575f5'}
+HEADERS = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 UPLOAD_FILE_NAME_KEY = 'ipa'
 UPLOAD_FILE_CONTENT = 'TAB.apk'
 OWNER_NAME = 'The-Tabcorp-Mobile-Robot-Organization'
@@ -18,7 +17,8 @@ release_information = {
 }
 
 
-def get_upload_url(owner, app, release_info, filename):
+def get_upload_url(owner, token, app, release_info, filename):
+    HEADERS['X-API-Token'] = token
     params = json.dumps(release_info).encode()
     url = '/'.join([BASE_URL, owner, app, UPLOAD_URL])
     response = requests.post(url, data=params, headers=HEADERS)
@@ -38,9 +38,11 @@ def get_upload_url(owner, app, release_info, filename):
 
 
 parser = argparse.ArgumentParser()
+parser.add_argument("--appToken", required=True, type=str)
 parser.add_argument("--appName", required=True, type=str)
 parser.add_argument("--appFile", required=True, type=str)
 args = parser.parse_args()
+appToken = args.appToken
 app_name = args.appName
 app_file = args.appFile
-get_upload_url(OWNER_NAME, app_name, release_information, app_file)
+get_upload_url(OWNER_NAME, appToken, app_name, release_information, app_file)
