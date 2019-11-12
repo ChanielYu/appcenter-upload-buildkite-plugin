@@ -117,7 +117,8 @@ appName = args.appName
 appFile = args.appFile
 releaseNotes = args.releaseNotes
 
-appCenter = AppCenter(appToken, appName)
-appCenter.setup_distribution()
-appCenter.upload_app(release_information, appFile)
-appCenter.release_app(releaseNotes)
+print(releaseNotes)
+# appCenter = AppCenter(appToken, appName)
+# appCenter.setup_distribution()
+# appCenter.upload_app(release_information, appFile)
+# appCenter.release_app(releaseNotes)
