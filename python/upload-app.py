@@ -87,7 +87,6 @@ class AppCenter:
             releases = json.loads(response.content.decode())
             self.release_id = max(releases, key=compare_key)['id']
             url = '/'.join([BASE_URL, APP_URL, self.owner_name, self.app_name, 'releases', '%d' % self.release_id])
-            print(url)
             response = requests.put(url, json={'release_notes': release_notes}, headers=HEADERS)
             print('Release id=%d app name= %s to %s status_code=%d' %
                   (self.release_id, self.app_name, self.distribution_group_name, response.status_code))
