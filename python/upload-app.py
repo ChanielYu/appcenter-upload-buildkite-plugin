@@ -118,6 +118,6 @@ appFile = args.appFile
 releaseNotes = args.releaseNotes
 
 appCenter = AppCenter(appToken, appName)
-appCenter.setup_distribution('Android-Developers')
+appCenter.setup_distribution()
 appCenter.upload_app(release_information, appFile)
 appCenter.release_app(releaseNotes)

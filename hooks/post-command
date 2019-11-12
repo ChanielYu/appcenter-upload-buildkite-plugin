@@ -62,7 +62,7 @@ echo ${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-}
 echo ${APPCENTER_APP_NAME}
 pwd
 
-python3 "${BASH_SOURCE%/*}/../python/upload-app.py" --appToken ${API_TOKEN} --appName ${APPCENTER_APP_NAME} --appFile ${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-}
+python3 "${BASH_SOURCE%/*}/../python/upload-app.py" --appToken ${API_TOKEN} --appName ${APPCENTER_APP_NAME} --appFile ${BUILDKITE_PLUGIN_APPCENTER_UPLOAD_PATH_IPA-} --releaseNotes ${BUILDKITE_MESSAGE}
 
 if [[ "$?" -ne 0 ]]; then
     echo '[!] AppCenter upload failed'
