@@ -27,9 +27,7 @@ UPLOAD_FILE_NAME_KEY = 'ipa'
 UPLOAD_FILE_CONTENT = 'TAB.apk'
 
 release_information = {
-    "release_id": 1,
-    "build_version": "1",
-    "build_number": "1"
+    "release_id": 0
 }
 
 
