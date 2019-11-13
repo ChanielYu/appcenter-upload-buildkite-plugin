@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-import json
-import requests
 import argparse
+import json
+import os
+import requests
 
 ########################################################################################################################
 # MASTER_TOKEN = '6f5093eb9a155f96cb2f97148172f923c0c575f5'
@@ -21,10 +22,17 @@ BASE_URL = 'https://api.appcenter.ms'
 APP_URL = 'v0.1/apps'
 ORG_URL = 'v0.1/orgs'
 DISTRIBUTION_GROUPS_URL = 'distribution_groups'
-UPLOAD_URL = 'release_uploads'
+UPLOAD_URL = 'uploads/releases'
 HEADERS = {'Accept': 'application/json', 'Content-Type': 'application/json'}
 UPLOAD_FILE_NAME_KEY = 'ipa'
 UPLOAD_FILE_CONTENT = 'TAB.apk'
+
+CLI_RELEASE = 'appcenter distribute release'
+CLI_PARA_APP = '--app'
+CLI_PARA_FILE = '--file'
+CLI_PARA_GROUP = '--group'
+CLI_PARA_NOTES = '--release-notes'
+CLI_PARA_TOKEN = '--token'
 
 release_information = {
     "release_id": 0
@@ -98,6 +106,17 @@ class AppCenter:
             print('Distributes a release to %s group status code = %d' %
                   (self.distribution_group_name, response.status_code))
 
+    def release_by_cli(self, filename, release_notes='Release'):
+        cli_app_name = '/'.join([self.owner_name, self.app_name])
+        command = ' '.join(
+            [CLI_RELEASE, CLI_PARA_APP, cli_app_name,
+             CLI_PARA_FILE, filename,
+             CLI_PARA_GROUP, self.distribution_group_name,
+             CLI_PARA_NOTES, '\"' + release_notes + '\"',
+             CLI_PARA_TOKEN, HEADERS['X-API-Token']])
+        print('running command: %s', command)
+        os.system(command)
+
 
 def compare_key(item):
     return item['id']
@@ -116,5 +135,4 @@ releaseNotes = args.releaseNotes
 
 appCenter = AppCenter(appToken, appName)
 appCenter.setup_distribution()
-appCenter.upload_app(release_information, appFile)
-appCenter.release_app(releaseNotes)
+appCenter.release_by_cli(appFile, releaseNotes)
