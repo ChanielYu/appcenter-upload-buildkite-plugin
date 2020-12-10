@@ -115,7 +115,7 @@ class AppCenter:
              CLI_PARA_GROUP, self.distribution_group_name,
              CLI_PARA_NOTES, '\"' + release_notes + '\"',
              CLI_PARA_TOKEN, HEADERS['X-API-Token']])
-        print('running command: %s', command)
+        print('running command: %s' % command)
         os.system(command)
 
 
