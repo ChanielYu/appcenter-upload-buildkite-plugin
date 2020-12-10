@@ -33,6 +33,7 @@ CLI_PARA_FILE = '--file'
 CLI_PARA_GROUP = '--group'
 CLI_PARA_NOTES = '--release-notes'
 CLI_PARA_TOKEN = '--token'
+CLI_PARA_QUIET = '--quiet'
 
 release_information = {
     "release_id": 0
@@ -109,7 +110,7 @@ class AppCenter:
     def release_by_cli(self, filename, release_notes='Release'):
         cli_app_name = '/'.join([self.owner_name, self.app_name])
         command = ' '.join(
-            [CLI_RELEASE, CLI_PARA_APP, cli_app_name,
+            [CLI_RELEASE, CLI_PARA_QUIET, CLI_PARA_APP, cli_app_name,
              CLI_PARA_FILE, filename,
              CLI_PARA_GROUP, self.distribution_group_name,
              CLI_PARA_NOTES, '\"' + release_notes + '\"',
