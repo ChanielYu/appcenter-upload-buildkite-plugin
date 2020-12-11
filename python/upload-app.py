@@ -134,6 +134,6 @@ appName = args.appName
 appFile = args.appFile
 releaseNotes = args.releaseNotes
 
-appCenter = AppCenter(appToken, appName, 'chaniel-yu')
+appCenter = AppCenter(appToken, appName)
 appCenter.setup_distribution()
 appCenter.release_by_cli(appFile, releaseNotes)
