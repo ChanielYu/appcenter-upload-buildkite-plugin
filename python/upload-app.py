@@ -16,7 +16,7 @@ import argparse
 ########################################################################################################################
 
 ORGANIZATION_NAME = 'The-Tabcorp-Mobile-Robot-Organization'
-DEFAULT_DISTRIBUTION_GROUP_NAME = 'Tabcorp-Mobile'
+DEFAULT_DISTRIBUTION_GROUP_NAME = 'Tabcorp Mobile'
 BASE_URL = 'https://api.appcenter.ms'
 APP_URL = 'v0.1/apps'
 ORG_URL = 'v0.1/orgs'
